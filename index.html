@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Xina's 9th Birthday</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      padding: 0;
+
+      min-height: 100vh;
+
+      font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          #fff2fa,
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at bottom right,
+          #ffd1e8,
+          transparent 40%
+        ),
+
+        linear-gradient(
+          135deg,
+          #ffc7e2,
+          #f5b0d5,
+          #d9a9f3
+        );
+
+      overflow-x: hidden;
+
+    }
+
+
+    /* =========================
+       FLOATING DECORATIONS
+    ========================= */
+
+    .float {
+
+      position: fixed;
+
+      bottom: -40px;
+
+      font-size: 20px;
+
+      animation:
+        floatUp 7s linear forwards;
+
+      opacity: 0.8;
+
+      z-index: 1;
+
+      pointer-events: none;
+
+    }
+
+
+    @keyframes floatUp {
+
+      0% {
+
+        transform:
+          translateY(0)
+          rotate(0deg);
+
+        opacity: 0;
+
+      }
+
+
+      15% {
+
+        opacity: 1;
+
+      }
+
+
+      100% {
+
+        transform:
+          translateY(-110vh)
+          rotate(20deg);
+
+        opacity: 0;
+
+      }
+
+    }
+
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    /* =========================
+       PASSWORD SCREEN
+    ========================= */
+
+    .password-box {
+
+      background:
+        rgba(255, 255, 255, 0.92);
+
+      border:
+        4px solid #ffffff;
+
+      padding:
+        35px 25px;
+
+      border-radius:
+        30px;
+
+      box-shadow:
+        0 15px 40px
+        rgba(126, 42, 105, 0.25);
+
+      text-align: center;
+
+      max-width: 380px;
+
+      width: 100%;
+
+    }
+
+
+    .password-emoji {
+
+      font-size: 55px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .password-box h1 {
+
+      color: #c21872;
+
+      font-size: 30px;
+
+      margin:
+        8px 0;
+
+    }
+
+
+    .password-box h2 {
+
+      color: #9142a6;
+
+      font-size: 20px;
+
+      margin:
+        5px 0 15px;
+
+    }
+
+
+    .password-box p {
+
+      color: #704263;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+
+    input {
+
+      width: 90%;
+
+      padding: 14px;
+
+      margin-top: 15px;
+
+      border:
+        2px solid #ef9bc6;
+
+      border-radius: 15px;
+
+      font-size: 16px;
+
+      text-align: center;
+
+      outline: none;
+
+      background: white;
+
+      color: #7b2558;
+
+    }
+
+
+    input:focus {
+
+      border-color:
+        #d63384;
+
+      box-shadow:
+        0 0 10px
+        rgba(214, 51, 132, 0.2);
+
+    }
+
+
+    button {
+
+      margin-top: 18px;
+
+      padding:
+        14px 28px;
+
+      border: none;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff4f9a,
+          #a83cc7
+        );
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 6px 18px
+        rgba(190, 51, 137, 0.3);
+
+      transition:
+        0.3s ease;
+
+    }
+
+
+    button:hover {
+
+      transform:
+        translateY(-2px)
+        scale(1.03);
+
+    }
+
+
+    .error {
+
+      color: #d02067;
+
+      font-size: 14px;
+
+      margin-top: 12px;
+
+      font-weight: bold;
+
+    }
+
+
+    /* =========================
+       MAIN BIRTHDAY CARD
+    ========================= */
+
+    .card {
+
+      display: none;
+
+      background:
+        rgba(255, 255, 255, 0.94);
+
+      max-width: 700px;
+
+      width: 100%;
+
+      padding: 25px;
+
+      border-radius: 30px;
+
+      border:
+        5px solid white;
+
+      box-shadow:
+        0 20px 50px
+        rgba(110, 36, 103, 0.3);
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+
+    /* Decorative corners */
+
+    .decoration {
+
+      position: absolute;
+
+      font-size: 30px;
+
+      pointer-events: none;
+
+      z-index: 2;
+
+    }
+
+
+    .one {
+
+      top: 15px;
+
+      left: 18px;
+
+    }
+
+
+    .two {
+
+      top: 15px;
+
+      right: 18px;
+
+    }
+
+
+    .three {
+
+      bottom: 15px;
+
+      left: 18px;
+
+    }
+
+
+    .four {
+
+      bottom: 15px;
+
+      right: 18px;
+
+    }
+
+
+    .birthday-top {
+
+      font-size: 42px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .card h1 {
+
+      margin:
+        5px 0;
+
+      font-size:
+        clamp(
+          30px,
+          6vw,
+          48px
+        );
+
+      color: #d21b73;
+
+      font-weight: 800;
+
+      text-shadow:
+        2px 2px 0 #ffffff;
+
+    }
+
+
+    .card h2 {
+
+      margin:
+        5px 0 15px;
+
+      font-size: 25px;
+
+      color: #9142a6;
+
+    }
+
+
+    /* =========================
+       SHORT INTRO
+    ========================= */
+
+    .intro {
+
+      color: #704263;
+
+      font-size: 16px;
+
+      line-height: 1.6;
+
+      margin:
+        10px auto 20px;
+
+      max-width: 580px;
+
+    }
+
+
+    /* =========================
+       HORIZONTAL PHOTO
+    ========================= */
+
+    .birthday-photo {
+
+      width: 100%;
+
+      max-width: 650px;
+
+      height: auto;
+
+      display: block;
+
+      margin:
+        20px auto;
+
+      border-radius: 22px;
+
+      border:
+        6px solid white;
+
+      box-shadow:
+        0 10px 25px
+        rgba(163, 46, 119, 0.25);
+
+      object-fit: contain;
+
+    }
+
+
+    /* =========================
+       SHORT BIRTHDAY MESSAGE
+    ========================= */
+
+    .short-message {
+
+      color: #c21872;
+
+      font-size: 18px;
+
+      font-weight: 600;
+
+      line-height: 1.5;
+
+      margin:
+        20px auto;
+
+      max-width: 550px;
+
+    }
+
+
+    /* =========================
+       AUDIO
+    ========================= */
+
+    .audio-title {
+
+      color: #963d9f;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+      margin-top: 22px;
+
+    }
+
+
+    audio {
+
+      width: 100%;
+
+      margin-top: 10px;
+
+      border-radius: 20px;
+
+    }
+
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    .brand {
+
+      margin-top: 25px;
+
+      font-size: 13px;
+
+      color: #80516e;
+
+    }
+
+
+    .brand span {
+
+      color: #c21872;
+
+      font-weight: bold;
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .container {
+
+        padding: 12px;
+
+      }
+
+
+      .password-box {
+
+        padding:
+          30px 20px;
+
+      }
+
+
+      .card {
+
+        padding: 18px;
+
+        border-radius: 24px;
+
+      }
+
+
+      .birthday-top {
+
+        font-size: 34px;
+
+      }
+
+
+      .card h1 {
+
+        font-size: 32px;
+
+      }
+
+
+      .card h2 {
+
+        font-size: 20px;
+
+      }
+
+
+      .intro {
+
+        font-size: 14px;
+
+      }
+
+
+      .birthday-photo {
+
+        border-width: 4px;
+
+        border-radius: 18px;
+
+      }
+
+
+      .short-message {
+
+        font-size: 16px;
+
+      }
+
+
+      .audio-title {
+
+        font-size: 16px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       FLOATING DECORATIONS
+  ========================= -->
+
+  <script>
+
+    const icons = [
+
+      "💕",
+      "💗",
+      "✨",
+      "🎀",
+      "🌸",
+      "⭐",
+      "🦄",
+      "🎉"
+
+    ];
+
+
+    function createFloat() {
+
+      const el =
+        document.createElement("div");
+
+
+      el.className =
+        "float";
+
+
+      el.innerHTML =
+        icons[
+          Math.floor(
+            Math.random() *
+            icons.length
+          )
+        ];
+
+
+      el.style.left =
+        Math.random() *
+        100 +
+        "vw";
+
+
+      el.style.fontSize =
+        (
+          15 +
+          Math.random() * 25
+        ) +
+        "px";
+
+
+      el.style.animationDuration =
+        (
+          5 +
+          Math.random() * 4
+        ) +
+        "s";
+
+
+      document.body.appendChild(el);
+
+
+      setTimeout(
+        () => el.remove(),
+        9000
+      );
+
+    }
+
+
+    setInterval(
+      createFloat,
+      700
+    );
+
+  </script>
+
+
+
+  <div class="container">
+
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================= -->
+
+    <div
+      class="password-box"
+      id="passwordBox"
+    >
+
+      <div class="password-emoji">
+        🎀💗
+      </div>
+
+
+      <h1>
+        Xina's Birthday
+      </h1>
+
+
+      <h2>
+        🎂 9th Birthday Surprise 🎉
+      </h2>
+
+
+      <p>
+
+        A special birthday surprise
+        is waiting just for you! 💕
+
+        <br><br>
+
+        Enter the secret password
+        to open it. 🔐✨
+
+      </p>
+
+
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter secret password"
+        onkeydown="
+          if(event.key === 'Enter')
+          checkPassword()
+        "
+      >
+
+
+      <br>
+
+
+      <button
+        onclick="checkPassword()"
+      >
+
+        Open My Surprise 🎁
+
+      </button>
+
+
+      <div
+        class="error"
+        id="error"
+      ></div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MAIN BIRTHDAY CARD
+    ========================= -->
+
+    <div
+      class="card"
+      id="mainCard"
+    >
+
+
+      <!-- Decorations -->
+
+      <div class="decoration one">
+        🎀
+      </div>
+
+      <div class="decoration two">
+        ✨
+      </div>
+
+      <div class="decoration three">
+        💕
+      </div>
+
+      <div class="decoration four">
+        🌸
+      </div>
+
+
+
+      <div class="birthday-top">
+
+        🎉🎂🎀
+
+      </div>
+
+
+
+      <h1>
+
+        Happy 9th Birthday!
+
+      </h1>
+
+
+
+      <h2>
+
+        To My Sweet Xina 💕
+
+      </h2>
+
+
+
+      <p class="intro">
+
+        Wishing you a day filled with
+        lots of love, laughter, fun
+        and happiness! 🎉💗
+
+      </p>
+
+
+
+      <!-- HORIZONTAL PHOTO -->
+
+      <img
+        src="photo.jpg"
+        alt="Xina's Birthday Photo"
+        class="birthday-photo"
+      >
+
+
+
+      <!-- SHORT MESSAGE -->
+
+      <p class="short-message">
+
+        Keep shining, keep smiling,
+        and always believe in yourself! 🌟💖
+
+      </p>
+
+
+
+      <!-- AUDIO -->
+
+      <div class="audio-title">
+
+        🎧 Your Special Birthday Message 🎧
+
+      </div>
+
+
+      <audio controls>
+
+        <source
+          src="audio.mp3"
+          type="audio/mpeg"
+        >
+
+        Your browser does not support
+        the audio element.
+
+      </audio>
+
+
+
+      <!-- BRAND -->
+
+      <div class="brand">
+
+        Made with 💗 by
+
+        <span>
+          Limitless Graphics by Thea
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       PASSWORD SCRIPT
+  ========================= -->
+
+  <script>
+
+    const correctPassword =
+      "Firstlove";
+
+
+    function checkPassword() {
+
+      const input =
+        document
+          .getElementById(
+            "passwordInput"
+          )
+          .value
+          .trim();
+
+
+      if (
+        input.toLowerCase() ===
+        correctPassword.toLowerCase()
+      ) {
+
+
+        /* Hide password screen */
+
+        document
+          .getElementById(
+            "passwordBox"
+          )
+          .style.display =
+          "none";
+
+
+        /* Show birthday card */
+
+        document
+          .getElementById(
+            "mainCard"
+          )
+          .style.display =
+          "block";
+
+
+        /* Try to play audio */
+
+        const audio =
+          document.querySelector(
+            "audio"
+          );
+
+
+        audio.play().catch(() => {
+
+          console.log(
+            "Audio playback requires user interaction."
+          );
+
+        });
+
+      }
+
+
+      else {
+
+        document
+          .getElementById(
+            "error"
+          )
+          .innerText =
+          "Oops! That's not the password. Try again 💕";
+
+      }
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
